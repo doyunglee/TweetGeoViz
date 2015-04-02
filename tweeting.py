@@ -68,11 +68,17 @@ def tweeting():
         
     diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float)))
     
+    diff_word_avg = np.asarray(zip(all_words_vect.get_feature_names, diff_tweets_avg))
+
+    sorted_dif_word_avg = diff_word_avg[diff_word_avg[:,1].argsort()]
+    print sorted_dif_word_avg
+    np.sort(dif_word_avgi)
     pdf = thinkstats2.EstimatedPdf(diff_tweets_avg)
     thinkplot.Pdf(pdf)
     thinkplot.Show(xlabel='Difference in Mean TF-IDF', ylabel="Proablity Density (in %)", title="Probablily Density of Mean Difference in TF-IDF")
+    
 
-    control_val = diff_tweets_avg[0]
+    control_val = diff_tweets_avg[5]
     
     count = 0
     for i in range(1000):
@@ -92,9 +98,6 @@ def tweeting():
         local_word_avg = np.asarray(zip(all_words_vect.get_feature_names(), np.asarray(wide_area_words_count.sum(axis=0).ravel())[0]/wide_area_words_count.shape[0]))
         
         wide_area_word_avg = np.asarray(zip(all_words_vect.get_feature_names(), np.asarray(local_words_count.sum(axis=0).ravel())[0]/local_words_count.shape[0]))
-        
-        print local_tweets_avg
-        print wide_area_word_avg
         
         local_tweets_avg = local_word_avg[:,1]
         wide_area_tweets_avg = wide_area_word_avg[:,1]
