@@ -46,7 +46,7 @@ def tweeting():
             tweets_arr = np.vstack((tweets_arr, np.array([(result['t'].encode('utf-8'), 'a')], dtype='object')))
             #westnile_times_arr.append((result['cr']-datetime.datetime(1970,1,1)).total_seconds())            
     for result in wide_area_results:
-        if " " in result["t"]:
+        if " " in result["t"] and result["t"] not in tweets_arr[:,0]:
             tweets_arr = np.vstack((tweets_arr, np.array([(result['t'].encode('utf-8'), 'b')], dtype='object')))
     
     local_tweets_arr = tweets_arr[tweets_arr[:,1] == 'a']
@@ -68,6 +68,10 @@ def tweeting():
         
     diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float)))
     
+    pdf = thinkstats2.pdf(diff_tweets_avg)
+    thinkplot.Pdf(pdf)
+    thinkplot.Show(xlabel='Difference in Mean TF-IDF', ylabel="Proablity Density", title="Probablily Density of Mean Difference in TF-IDF")
+
     control_val = diff_tweets_avg[0]
     
     count = 0
