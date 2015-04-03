@@ -36,8 +36,8 @@ def tweeting():
     end = datetime.datetime(2014,11,15,0,0,0,0)
     
     #this finds all the tweets under the selected criteria. results is all the tweets in the outbreak zone. wide_area_results is the area around it.
-    results = collection.find({'cc': 'US' , 'tlt': {"$gt": 40, "$lt": 41 }, 'tln': {"$gt": -74.5, "$lt": -73.5 }, 'cr': {'$gt': start, '$lt': end}}, limit=10)
-    wide_area_results = collection.find({'cc': 'US' , 'tlt': {"$gt": 39, "$lt": 42 }, 'tln': {"$gt": -75.5, "$lt": -72.5 }, 'cr': {'$gt': start, '$lt': end}}, limit=10)    
+    results = collection.find({'cc': 'US' , 'tlt': {"$gt": 40, "$lt": 41 }, 'tln': {"$gt": -74.5, "$lt": -73.5 }, 'cr': {'$gt': start, '$lt': end}}, limit=1000)
+    wide_area_results = collection.find({'cc': 'US' , 'tlt': {"$gt": 39, "$lt": 42 }, 'tln': {"$gt": -75.5, "$lt": -72.5 }, 'cr': {'$gt': start, '$lt': end}}, limit=1000)    
 
 
     #going through the results and putting the texts of the tweets into an array.    
@@ -68,9 +68,9 @@ def tweeting():
         
     diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float)))
     
-    pdf = thinkstats2.pdf(diff_tweets_avg)
+    pdf = thinkstats2.EstimatedPdf(diff_tweets_avg)
     thinkplot.Pdf(pdf)
-    thinkplot.Show(xlabel='Difference in Mean TF-IDF', ylabel="Proablity Density", title="Probablily Density of Mean Difference in TF-IDF")
+    thinkplot.Show(xlabel='Difference in Mean TF-IDF', ylabel="Proablity Density (in %)", title="Probablily Density of Mean Difference in TF-IDF")
 
     control_val = diff_tweets_avg[0]
     
