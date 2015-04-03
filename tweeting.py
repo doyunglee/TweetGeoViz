@@ -42,19 +42,21 @@ def tweeting():
 
     #going through the results and putting the texts of the tweets into an array.    
     for result in results:
-        if " " in result['t']:
+        if "" in result['t']:
             tweets_arr = np.vstack((tweets_arr, np.array([(result['t'].encode('utf-8'), 'a')], dtype='object')))
             #westnile_times_arr.append((result['cr']-datetime.datetime(1970,1,1)).total_seconds())            
     for result in wide_area_results:
-        if " " in result["t"] and result["t"] not in tweets_arr[:,0]:
+        if "" in result["t"] and result["t"] not in tweets_arr[:,0]:
             tweets_arr = np.vstack((tweets_arr, np.array([(result['t'].encode('utf-8'), 'b')], dtype='object')))
     
     local_tweets_arr = tweets_arr[tweets_arr[:,1] == 'a']
     wide_area_tweets_arr = tweets_arr[tweets_arr[:,1] == 'b']    
     
     #these are matricies with the array of tweet texts.
-    local_words_count = all_words_vect.fit_transform(local_tweets_arr[:,0])
-    wide_area_words_count = all_words_vect.fit_transform(wide_area_tweets_arr[:,0])
+    all_words_vect.fit(local_tweets_arr[:,0])
+    all_words_vect.fit(wide_area_tweets_arr[:,0])
+    local_words_count = all_words_vect.transform(local_tweets_arr[:,0])
+    wide_area_words_count = all_words_vect.transform(wide_area_tweets_arr[:,0])
     
     #print zip(all_words_vect.get_feature_names(), np.asarray(all_words_count.sum(axis=0).ravel())) #finds total number of times a word is shown
     #print all_words_vect.get_feature_names()
