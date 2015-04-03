@@ -93,8 +93,10 @@ def tweeting():
         wide_area_tweets_arr = hypothesis_arr[hypothesis_arr[:,1] == 'b']
         
         #these are matricies with the array of tweet texts.
-        local_words_count = all_words_vect.fit_transform(local_tweets_arr[:,0])
-        wide_area_words_count = all_words_vect.fit_transform(wide_area_tweets_arr[:,0])
+        all_words_vect.fit(local_tweets_arr[:,0])
+        all_words_vect.fit(wide_area_tweets_arr[:,0])
+        local_words_count = all_words_vect.transform(local_tweets_arr[:,0])
+        wide_area_words_count = all_words_vect.transform(wide_area_tweets_arr[:,0])
         
         #print zip(all_words_vect.get_feature_names(), np.asarray(all_words_count.sum(axis=0).ravel())) #finds total number of times a word is shown
         #print all_words_vect.get_feature_names()
