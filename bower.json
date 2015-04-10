@@ -1,0 +1,21 @@
+{
+  "name": "PyTweetGeoViz",
+  "version": "0.0.0",
+  "homepage": "https://github.com/doyunglee/TweetGeoViz",
+  "authors": [
+    "doyunglee <leedoyung@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.2.0",
+    "jquery": "2.1.1",
+    "d3": "3.4.11"
+  }
+}
