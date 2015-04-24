@@ -37,8 +37,8 @@ def tweeting(epi,r1,r2,tI,tF):
     #start = tI
     #end = tF\
 
-    start = datetime.datetime(2014,7,1,0,0,0,0)
-    end = datetime.datetime(2014,11,15,0,0,0,0)
+    start = datetime.datetime(2014,5,1,0,0,0,0)
+    end = datetime.datetime(2014,6,31,0,0,0,0)
     #this finds all the tweets under the selected criteria. results is all the tweets in the outbreak zone. wide_area_results is the area around it.
     #results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r1, "$lt": epi+r1 }, 'tln': {"$gt": epi-r1, "$lt": epi+r1 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
     #wide_area_results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r2, "$lt": epi+r2}, 'tln': {"$gt": epi-r2, "$lt": epi+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
