@@ -9,6 +9,7 @@ import pymongo
 import thinkstats2
 import thinkplot
 import datetime
+import sys
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
