@@ -141,5 +141,5 @@ def tweeting(epi,r1,r2,tI,tF):
     #thinkplot.Show()
 
 if __name__ == '__main__':
-    tweeting([31, -91], 1,1,0,0)
+    tweeting([31, 100], 1,1,0,0)
 
