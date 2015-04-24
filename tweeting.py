@@ -40,7 +40,7 @@ def tweeting(epi,r1,r2,tI,tF):
     #results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r1, "$lt": epi+r1 }, 'tln': {"$gt": epi-r1, "$lt": epi+r1 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
     #wide_area_results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r2, "$lt": epi+r2}, 'tln': {"$gt": epi-r2, "$lt": epi+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
 
-    results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r2, "$lt": epi+r2}, 'tln': {"$gt": epi-r2, "$lt": epi+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
+    results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi[0]-r2, "$lt": epi[0]+r2}, 'tln': {"$gt": epi[2]-r2, "$lt": epi[2]+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
 
     results = pd.DataFrame(list(results));
 
