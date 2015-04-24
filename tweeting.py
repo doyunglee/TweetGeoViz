@@ -36,7 +36,7 @@ def tweeting(epi,r1,r2,tI,tF):
     #tlt is tweet latitude, which is around 31, tln is longitude, which is around -91
     #start = tI
     #end = tF\
-
+    epi = float(epi)
     start = datetime.datetime(2014,7,1,0,0,0,0)
     end = datetime.datetime(2014,11,15,0,0,0,0)
     #this finds all the tweets under the selected criteria. results is all the tweets in the outbreak zone. wide_area_results is the area around it.
