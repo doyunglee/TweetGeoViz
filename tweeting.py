@@ -36,14 +36,14 @@ def tweeting(epi,r1,r2,tI,tF):
     #tlt is tweet latitude, which is around 31, tln is longitude, which is around -91
     #start = tI
     #end = tF\
-    epi = float(epi)
+
     start = datetime.datetime(2014,7,1,0,0,0,0)
     end = datetime.datetime(2014,11,15,0,0,0,0)
     #this finds all the tweets under the selected criteria. results is all the tweets in the outbreak zone. wide_area_results is the area around it.
     #results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r1, "$lt": epi+r1 }, 'tln': {"$gt": epi-r1, "$lt": epi+r1 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
     #wide_area_results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r2, "$lt": epi+r2}, 'tln': {"$gt": epi-r2, "$lt": epi+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
 
-    results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi[0]-r2, "$lt": epi[0]+r2}, 'tln': {"$gt": epi[2]-r2, "$lt": epi[2]+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
+    results = collection.find({'cc': 'US' , 'tlt': {"$gt": float(epi[0])-r2, "$lt": float(epi[0])+r2}, 'tln': {"$gt": float(epi[2])-r2, "$lt": float(epi[2])+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
 
     results = pd.DataFrame(list(results));
 
