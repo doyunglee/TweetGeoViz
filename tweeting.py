@@ -47,8 +47,8 @@ def tweeting(epi,r1,r2,tI,tF):
 
     results = pd.DataFrame(list(results));
     print results
-    local_tweets_df = results[(epi-r1<results.tlt<epi+r1)and(epi-r1<results.tln<epi+r1)];
-    wide_tweets_df = results[not((epi-r1<results.tlt<epi+r1)and(epi-r1<results.tln<epi+r1))];
+    local_tweets_df = results[(epi[0]-r1<results.tlt<epi[0]+r1)and(epi[0]-r1<results.tln<epi[0]+r1)];
+    wide_tweets_df = results[not((epi[0]-r1<results.tlt<epi+r1)and(epi[0]-r1<results.tln<epi[0]+r1))];
 
     local_tweets_arr = np.asarray(local_tweets_df.t)
     local_tweets_arr = np.hstack((local_tweets_arr, np.zeros((a.shape[0], 1), dtype='object')))
