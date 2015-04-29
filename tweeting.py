@@ -50,12 +50,12 @@ def tweeting(epi,r1,r2,tI,tF):
     local_tweets_df = results.query('(@epi[0]-@r1<tlt<@epi[0]+@r1) and (@epi[1]-@r1<tln<@epi[1]+@r1)');
     wide_tweets_df = results.query('not((@epi[0]-@r1<tlt<@epi[0]+@r1) and (@epi[1]-@r1<tln<@epi[1]+@r1))');
 
-    local_tweets_arr = np.asarray(local_tweets_df.t)
-    local_tweets_arr = np.hstack((local_tweets_arr, np.zeros((local_tweets_arr.shape[0], 1), dtype='object')))
+    local_tweets_arr = local_tweets_df['t'].values
+    local_tweets_arr = np.hstack((local_tweets_arr, np.zeros((local_tweets_arr.shape), dtype='object')))
     local_tweets_arr[:,1] = 'a'
 
-    wide_area_tweets_arr = np.asarray(wide_tweets_df.t)
-    wide_area_tweets_arr = np.hstack((wide_tweets_arr, np.zeros((wide_area_tweets_arr.shape[0], 1), dtype='object')))
+    wide_area_tweets_arr = wide_tweets_df['t'].values
+    wide_area_tweets_arr = np.hstack((wide_tweets_arr, np.zeros((wide_area_tweets_arr.shape), dtype='object')))
     wide_area_tweets_arr[:,1] = 'b'
 
     #these are matricies with the array of tweet texts.
