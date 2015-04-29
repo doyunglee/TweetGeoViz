@@ -46,26 +46,21 @@ def tweeting(epi,r1,r2,tI,tF):
     results = collection.find({'cc': 'US' , 'tlt': {"$gt": float(epi[0])-r2, "$lt": float(epi[0])+r2}, 'tln': {"$gt": float(epi[1])-r2, "$lt": float(epi[1])+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10)
 
     results = pd.DataFrame(list(results));
-    print results
+
     local_tweets_df = results.query('(@epi[0]-@r1<tlt<@epi[0]+@r1) and (@epi[1]-@r1<tln<@epi[1]+@r1)');
+    local_tweets_df['loc'] = 'a'
     wide_tweets_df = results.query('not((@epi[0]-@r1<tlt<@epi[0]+@r1) and (@epi[1]-@r1<tln<@epi[1]+@r1))');
+    wide_tweets_df['loc'] = 'b'
 
-    local_tweets_arr = local_tweets_df['t'].values
-    local_tweets_arr = np.hstack((local_tweets_arr, np.zeros((local_tweets_arr.shape), dtype='object')))
-    local_tweets_arr[:,1] = 'a'
+    local_tweets_arr = local_tweets_df.as_matrix(['t', 'loc']);
+    wide_area_tweets_arr = wide_tweets_df.as_matrix(['t', 'loc']);
 
-    wide_area_tweets_arr = wide_tweets_df['t'].values
-    wide_area_tweets_arr = np.hstack((wide_tweets_arr, np.zeros((wide_area_tweets_arr.shape), dtype='object')))
-    wide_area_tweets_arr[:,1] = 'b'
 
     #these are matricies with the array of tweet texts.
     all_words_vect.fit(local_tweets_arr[:,0])
     all_words_vect.fit(wide_area_tweets_arr[:,0])
     local_words_count = all_words_vect.transform(local_tweets_arr[:,0])
     wide_area_words_count = all_words_vect.transform(wide_area_tweets_arr[:,0])
-
-    #print zip(all_words_vect.get_feature_names(), np.asarray(all_words_count.sum(axis=0).ravel())) #finds total number of times a word is shown
-    #print all_words_vect.get_feature_names()
 
     local_word_avg = np.asarray(zip(all_words_vect.get_feature_names(), np.asarray(wide_area_words_count.sum(axis=0).ravel())[0]/wide_area_words_count.shape[0]))
 
@@ -76,8 +71,8 @@ def tweeting(epi,r1,r2,tI,tF):
 
     diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float)))
 
-    #diff_word_avg = np.asarray(zip(all_words_vect.get_feature_names(), diff_tweets_avg))
     diff_word_avg = np.rec.fromarrays((all_words_vect.get_feature_names(),diff_tweets_avg), names=('features', 'diffs'));
+
     sorted_dif_word_avg = diff_word_avg[diff_word_avg[:,1].argsort()]
     print sorted_dif_word_avg
     return sorted_dif_word_avg
