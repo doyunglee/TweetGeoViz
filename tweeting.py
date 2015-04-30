@@ -19,9 +19,8 @@ from random import choice
 
 
 def tweeting(epi,r1,r2,tI,tF):
-    all_words_vect = TfidfVectorizer()
+    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range(1,3), use_dif=False)
 
-    words_to_avoid = ['the','my','you','co','http','to']
 
     tweets_arr = np.empty([1,2], dtype='object')
     hypothesis_arr = np.empty([1,2], dtype='object')
@@ -36,12 +35,6 @@ def tweeting(epi,r1,r2,tI,tF):
     #tlt is tweet latitude, which is around 31, tln is longitude, which is around -91
     start = tI
     end = tF
-
-    #start = datetime.datetime(2014,5,1,0,0,0,0)
-    #end = datetime.datetime(2014,6,30,0,0,0,0)
-    #this finds all the tweets under the selected criteria. results is all the tweets in the outbreak zone. wide_area_results is the area around it.
-    #results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r1, "$lt": epi+r1 }, 'tln': {"$gt": epi-r1, "$lt": epi+r1 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
-    #wide_area_results = collection.find({'cc': 'US' , 'tlt': {"$gt": epi-r2, "$lt": epi+r2}, 'tln': {"$gt": epi-r2, "$lt": epi+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
 
     results = collection.find({'cc': 'US' , 'tlt': {"$gt": float(epi[0])-r2, "$lt": float(epi[0])+r2}, 'tln': {"$gt": float(epi[1])-r2, "$lt": float(epi[1])+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
 
