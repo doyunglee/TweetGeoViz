@@ -2,7 +2,7 @@
 """
 Created on Mon Feb 23 19:37:10 2015
 
-@author: doyung
+@author: Doyung and Austin
 """
 
 import pymongo
@@ -19,7 +19,9 @@ from random import choice
 
 
 def tweeting(epi,r1,r2,tI,tF):
-    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3))
+
+    limit = 10000
+    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3), max_df=.85, min_df=10/limit)
 
 
     tweets_arr = np.empty([1,2], dtype='object')
