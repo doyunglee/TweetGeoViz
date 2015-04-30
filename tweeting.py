@@ -70,7 +70,7 @@ def tweeting(epi,r1,r2,tI,tF):
 
     final_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg, 'chi2s':chi2s})
 
-    sorted_diff_word_avg_df = diff_word_avg_df.sort(['chi2s'], ascending=False)
+    final_df  = final_df.sort(['chi2s'], ascending=False)
     print final_df
 
 if __name__ == '__main__':
