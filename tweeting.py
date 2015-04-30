@@ -71,9 +71,7 @@ def tweeting(epi,r1,r2,tI,tF):
 
     diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float)))
 
-    diff_word_avg = np.rec.fromarrays((all_words_vect.get_feature_names(),diff_tweets_avg), names=('features', 'diffs'));
-
-    diff_word_avg_df = pd.DataFrame.from_records(diff_tweets_avg)
+    diff_word_avg_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg})
 
     print diff_word_avg_df
     sorted_diff_word_avg_df = diff_word_avg_df.sort(['diffs'])
