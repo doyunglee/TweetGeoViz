@@ -73,6 +73,7 @@ def tweeting(epi,r1,r2,tI,tF):
 
     diff_word_avg = np.rec.fromarrays((all_words_vect.get_feature_names(),diff_tweets_avg), names=('features', 'diffs'));
 
+    print diff_word_avg
     sorted_dif_word_avg = diff_word_avg[diff_word_avg[:,1].argsort()]
     print sorted_dif_word_avg
     return sorted_dif_word_avg
