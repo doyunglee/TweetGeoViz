@@ -62,12 +62,16 @@ def tweeting(epi,r1,r2,tI,tF):
 
     wide_area_tweets_avg = np.asarray(wide_area_words_count.sum(axis=0).ravel())[0]/wide_area_words_count.shape[0]
 
+    expected_avg = (local_tweets_avg + wide_area_tweets_avg)/2
+
+    chi2s = (((local_tweets_avg-expected_avg)**2)/expected_avg)+(((wide_area_tweets_avg-expected_avg)**2)/expected_avg)
+
     diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float)))
 
-    diff_word_avg_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg})
+    final_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg, 'chi2s':chi2s})
 
-    sorted_diff_word_avg_df = diff_word_avg_df.sort(['diffs'], ascending=False)
-    print sorted_diff_word_avg_df
+    sorted_diff_word_avg_df = diff_word_avg_df.sort(['chi2s'], ascending=False)
+    print final_df
 
 if __name__ == '__main__':
     tweeting([40.5, -74],1,3,datetime.datetime(2014,7,1,0,0,0,0),datetime.datetime(2014,11,15,0,0,0,0) )
