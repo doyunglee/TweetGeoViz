@@ -74,9 +74,9 @@ def tweeting(epi,r1,r2,tI,tF):
     diff_word_avg_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg})
 
     print diff_word_avg_df
-    sorted_diff_word_avg_df = diff_word_avg_df.sort(['diffs'])
+    sorted_diff_word_avg_df = diff_word_avg_df.sort(['diffs'], ascending=false)
     print sorted_diff_word_avg_df
-    return sorted_dif_word_avg
+    return sorted_dif_word_avg_df
     #for i in sorted_dif_word_avg:
         #if float(i[1]) >  0.001:
             #print i
