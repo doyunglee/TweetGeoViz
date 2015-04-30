@@ -21,7 +21,7 @@ from random import choice
 def tweeting(epi,r1,r2,tI,tF):
 
     limit = 10000
-    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3), max_df=.85, min_df=10/limit)
+    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3), max_df=.50, min_df=20/limit)
 
 
     tweets_arr = np.empty([1,2], dtype='object')
