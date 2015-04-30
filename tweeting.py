@@ -19,7 +19,7 @@ from random import choice
 
 
 def tweeting(epi,r1,r2,tI,tF):
-    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range(1,3), use_dif=False)
+    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3))
 
 
     tweets_arr = np.empty([1,2], dtype='object')
@@ -66,7 +66,6 @@ def tweeting(epi,r1,r2,tI,tF):
 
     diff_word_avg_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg})
 
-    print diff_word_avg_df
     sorted_diff_word_avg_df = diff_word_avg_df.sort(['diffs'], ascending=False)
     print sorted_diff_word_avg_df
     return sorted_dif_word_avg_df
