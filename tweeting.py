@@ -68,7 +68,7 @@ def tweeting(epi,r1,r2,tI,tF):
 
     sorted_diff_word_avg_df = diff_word_avg_df.sort(['diffs'], ascending=False)
     print sorted_diff_word_avg_df
-    return sorted_dif_word_avg_df
+    #return sorted_diff_word_avg_df
     #for i in sorted_dif_word_avg:
         #if float(i[1]) >  0.001:
             #print i
