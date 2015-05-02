@@ -38,7 +38,7 @@ def tweeting(epi,r1,r2,tI,tF):
     start = tI
     end = tF
 
-    results = collection.find({'cc': 'US' , 'tlt': {"$gt": float(epi[0])-r2, "$lt": float(epi[0])+r2}, 'tln': {"$gt": float(epi[1])-r2, "$lt": float(epi[1])+r2 }, 'cr': {'$gt': start, '$lt': end}}, limit=10000)
+    results = collection.find({'cc': 'US' , 'tlt': {"$gt": float(epi[0])-r2, "$lt": float(epi[0])+r2}, 'tln': {"$gt": float(epi[1])-r2, "$lt": float(epi[1])+r2 }, 'cr': {'$gt': start, '$lt': end}})
 
     results = pd.DataFrame(list(results));
 
@@ -68,11 +68,14 @@ def tweeting(epi,r1,r2,tI,tF):
 
     percent_local_tweets_avg = local_tweets_avg.astype(float)/np.add(local_tweets_avg.astype(float), wide_area_tweets_avg.astype(float))
 
+    diff_tweets_avg = (local_tweets_avg.astype(float)-wide_area_tweets_avg.astype(float))/(local_tweets_avg.astype(float), wide_area_tweets_avg.astype(float))
+
     normalized_percent = percent_local_tweets_avg*chi2s
+    normalized_diffs = diff_tweets_avg*chi2s
 
-    final_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'percent_local': percent_local_tweets_avg, 'chi2s':chi2s, 'npercent':normalized_percent})
+    final_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs':diff_tweets_avg, 'percent_local': percent_local_tweets_avg, 'chi2s':chi2s, 'npercent':normalized_percent, 'ndiffs':normalized_diffs})
 
-    final_df  = final_df.sort(['npercent'], ascending=False)
+    final_df  = pd.DataFrame.abs(final_df).sort(['ndiffs'], ascending=False)
 
     print final_df
 
