@@ -66,7 +66,7 @@ def tweeting(epi,r1,r2,tI,tF):
 
     chi2s = (((local_tweets_avg-expected_avg)**2)/expected_avg)+(((wide_area_tweets_avg-expected_avg)**2)/expected_avg)
 
-    percent_local_tweets_avg = local_tweets_avg.astype(float)/np.add(local_tweets_avg.astype(float), wide_area_tweets_avg.astype(float)
+    percent_local_tweets_avg = local_tweets_avg.astype(float)/np.add(local_tweets_avg.astype(float), wide_area_tweets_avg.astype(float))
 
     normalized_percent = percent_local_tweets_avg*chi2s
 
