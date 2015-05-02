@@ -11,3 +11,6 @@
     min-height: calc(80vh - 60px);
 }
 
+.well.bottombar {
+    min-height: calc(15vh - 60px);
+}
