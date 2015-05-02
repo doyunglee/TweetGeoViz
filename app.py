@@ -7,7 +7,7 @@ app = Flask(__name__)
 #homepage
 @app.route('/')
 def index():
-	return flask.render_template("index.html")
+	return render_template("index.html")
 @app.route('/query')
 def query():
 	epicenter = request.args.get('epi');
