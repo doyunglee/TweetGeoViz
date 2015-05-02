@@ -12,6 +12,6 @@
 }
 
 .well.bottombar {
-    min-height: calc(25vh - 60px);
+    min-height: calc(20vh - 60px);
     margin-bottom: 2.5vh;
 }
