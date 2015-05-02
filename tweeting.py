@@ -66,14 +66,14 @@ def tweeting(epi,r1,r2,tI,tF):
 
     chi2s = (((local_tweets_avg-expected_avg)**2)/expected_avg)+(((wide_area_tweets_avg-expected_avg)**2)/expected_avg)
 
-    diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float))/np.add(local_tweets_avg.astype(float), wide_area_tweets_avg.astype(float)))
+    diff_tweets_avg = np.absolute(np.subtract(local_tweets_avg.astype(float),wide_area_tweets_avg.astype(float))/np.add(local_tweets_avg.astype(float), wide_area_tweets_avg.astype(float))-.5)
 
     normalized_diffs = diff_tweets_avg*chi2s
 
     final_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs': diff_tweets_avg, 'chi2s':chi2s, 'ndiffs':normalized_diffs})
 
     final_df  = final_df.sort(['ndiffs'], ascending=False)
-    
+
     print final_df
 
 if __name__ == '__main__':
