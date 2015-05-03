@@ -97,12 +97,12 @@
 						<h3> Location: </h3>
 						<form class="form-inline">
 						  <div class="form-group">
-						    <label for="Lat">Lat</label>
+						    <label for="lat">Lat</label>
 						    <input type="text" class="form-control" id="lat" placeholder="32.7">
 						  </div>
 						  <div class="form-group">
-						    <label for="Long">Long</label>
-						    <input type="text" class="form-control" id="Long" placeholder="-117">
+						    <label for="long">Long</label>
+						    <input type="text" class="form-control" id="long" placeholder="-117">
 						  </div>
 						</form>	
 						<h3> Time: </h3>
@@ -206,7 +206,8 @@
 							var data = {
 								start: $('#start').val(),
 								end: $('#end').val(),
-								epi: [$('#lat').val(),$('#long').val()],
+								epiLt: $('#lat').val(),
+								epiLn: $('#long').val(),
 								r1: $('#slider-area').val()[0],
 								r2: $('#slider-area').val()[0],
 								u: $('#slider-uniqueness').val(),

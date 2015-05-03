@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask import render_template
 from tweeting import tweeting
+from time import strptime
 
 app = Flask(__name__)
 
@@ -11,12 +12,12 @@ def index():
 @app.route('/query')
 def query():
 	print request.args
-	epicenter = request.args.get('epi');
+	epicenter = [float(request.args.get('epiLt')), float(request.args.get('epiLn'))];
 	print epicenter;
-	r1 = request.args.get('r1');
-	r2 = request.args.get('r2');
-	tI = request.args.get('tI');
-	tF = request.args.get('tF');
+	r1 = float(request.args.get('r1'));
+	r2 = float(request.args.get('r2'));
+	tI = request.args.get('start');
+	tF = request.args.get('end');
 	print tF
 	res = tweeting(epicenter,r1,r2,tI,tF);
 	return flask.jsonify(res);
