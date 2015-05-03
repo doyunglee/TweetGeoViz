@@ -68,7 +68,8 @@
 							    //make cloud
 							    d3.layout.cloud().size([divwidth-70, divwidth-70])
 								.words(d3.zip(wordarray, weightarray).map(function(d) {
-								    return {text: d[0], size: d[1]};
+									console.log(d[1]);
+								    return {text: d[0], size: parseInt(10000 * d[1])};
 								}))
 								.padding(5)
 								.rotate(function() { return 0; })
@@ -85,7 +86,7 @@
 								    .selectAll("text")
 								    .data(words)
 								    .enter().append("text")
-								    .style("font-size", function(d) { return d.size + "px"; })
+								    .style("font-size", function(d) {return (d.size + "px"); })
 								    .style("font-family", "Roboto")
 								    .style("fill", "black")
 								    .style("font-weight", "700")
