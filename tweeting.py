@@ -20,8 +20,8 @@ from random import choice
 
 def tweeting(epi,r1,r2,tI,tF,u):
 
-    limit = 1000
-    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,1), max_df=u/limit*10, min_df=20/limit)
+    limit = 10000
+    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,1), max_df=u, min_df=20/limit)
 
     tweets_arr = np.empty([1,2], dtype='object')
     hypothesis_arr = np.empty([1,2], dtype='object')
@@ -85,5 +85,5 @@ def tweeting(epi,r1,r2,tI,tF,u):
     return dict(zip(final_df.features, final_df.chi2s))
 
 if __name__ == '__main__':
-    tweeting([32.7, -117.16],.2,1,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,1,0,0,0,0), .15)
+    tweeting([32.7, -117.16],.2,1,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,1,0,0,0,0), .015)
 
