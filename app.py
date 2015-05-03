@@ -12,10 +12,12 @@ def index():
 def query():
 	print request.args
 	epicenter = request.args.get('epi');
+	print epicenter;
 	r1 = request.args.get('r1');
 	r2 = request.args.get('r2');
 	tI = request.args.get('tI');
 	tF = request.args.get('tF');
+	print tF
 	res = tweeting(epicenter,r1,r2,tI,tF);
 	return flask.jsonify(res);
 
