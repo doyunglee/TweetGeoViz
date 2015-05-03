@@ -206,11 +206,12 @@
 							var data = {
 								start: $('#start').val(),
 								end: $('#end').val(),
-								epi: 0,
+								epi: [$('#lat').val(),$('#long').val()],
 								r1: $('#slider-area').val()[0],
 								r2: $('#slider-area').val()[0],
 								u: $('#slider-uniqueness').val(),
 							};
+							console.log(data);
 
 							$.get('/query', data, function (words){
 								console.log(words);
