@@ -8,11 +8,11 @@
 .well.map-well {
     margin-top: calc(60px + 2.5vh);
     margin-bottom: 2.5vh;
-    min-height: calc(70vh - 60px);
+    height: calc(65vh - 60px);
 }
 
 .well.bottombar {
-    min-height: calc(29.5vh - 60px);
+    height: calc(34.5vh - 60px);
 }
 
 path {
@@ -29,7 +29,7 @@ path {
 }
 
 #map-station {
-	margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
 }
 
@@ -40,7 +40,7 @@ path {
 
 /*Slider CSS*/
 #slider .sample1, #slider .sample2 {
-	padding: 20px 0;
+    padding: 20px 0;
     background-color: #f0f0f0;
     margin-bottom: 20px;
 }
