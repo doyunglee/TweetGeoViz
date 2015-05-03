@@ -8,11 +8,11 @@
 .well.map-well {
     margin-top: calc(60px + 2.5vh);
     margin-bottom: 2.5vh;
-    min-height: calc(80vh - 60px);
+    min-height: calc(70vh - 60px);
 }
 
 .well.bottombar {
-    min-height: calc(19.5vh - 60px);
+    min-height: calc(29.5vh - 60px);
 }
 
 path {
