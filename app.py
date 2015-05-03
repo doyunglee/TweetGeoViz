@@ -22,9 +22,10 @@ def query():
 	tF = request.args.get('end')
 	tI = datetime.fromtimestamp(mktime(strptime(tI, "%Y-%m-%d")))
 	tF = datetime.fromtimestamp(mktime(strptime(tF, "%Y-%m-%d")))
-
 	print tF
-	res = tweeting(epicenter,r1,r2,tI,tF)
+
+	u = request.args.get('u')
+	res = tweeting(epicenter,r1,r2,tI,tF,u)
 	return flask.jsonify(res)
 
 if __name__ == '__main__':
