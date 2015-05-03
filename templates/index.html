@@ -49,7 +49,7 @@
 			<div class="col-md-3">
 				<!--This is where the word cloud will be-->
 				<div class="well sidebar" >
-					<div id="wordcloudcontainer">
+					<div id="wordcloudcontainer" class="well">
 						<script type="text/javascript">
 							d3.json("static/wordcloud.json", function(data) {
 						    var fill = d3.scale.category20();
@@ -73,10 +73,10 @@
 							.start();
 						    function draw(words) {
 							d3.select("#wordcloudcontainer").append("svg")
-							    .attr("width", 300)
+							    .attr("width", 250)
 							    .attr("height", 300)
 							    .append("g")
-							    .attr("transform", "translate(150,150)")
+							    .attr('transform',"translate("+$('#wordcloudcontainer').width()/2+ ","+$('#wordcloudcontainer').height()/2+")")
 							    .selectAll("text")
 							    .data(words)
 							    .enter().append("text")
@@ -93,7 +93,31 @@
 						});
 						</script>
 					</div>
-					<button class="btn btn-fab btn-raised btn-sm btn-success btn-done"><i class="mdi-navigation-check"></i></button>
+					<div class="well controlls-well">
+						<h3> Location: </h3>
+						<form class="form-inline">
+						  <div class="form-group">
+						    <label for="Lat">Lat</label>
+						    <input type="text" class="form-control" id="lat" placeholder="32.7">
+						  </div>
+						  <div class="form-group">
+						    <label for="Long">Long</label>
+						    <input type="text" class="form-control" id="Long" placeholder="-117">
+						  </div>
+						</form>	
+						<h3> Time: </h3>
+						<form class="form-inline">
+						  <div class="form-group">
+						    <label for="start">Start</label>
+						    <input type="date" class="form-control" id="start">
+						  </div>
+						  <div class="form-group">
+						    <label for="end">End</label>
+						    <input type="date" class="form-control" id="end">
+						  </div>
+						</form>
+						<button class="btn btn-fab btn-raised btn-sm btn-success btn-done"><i class="mdi-navigation-check"></i></button>
+					</div>
 				</div>
 			</div>
 
@@ -158,9 +182,9 @@
 				<div class="well bottombar">
 					<h3>TIMELINE</h3>
 					<h5>outer area:</h5>
-  					<div id="slider-area" class="slider shor slider-material-orange"></div>
+  					<div id="slider-area" class="slider"></div>
   					<h5>Uniqueness:</h5>
-					<div id="slider-uniqueness" class="slider shor slider-material-orange"></div>
+					<div id="slider-uniqueness" class="slider"></div>
 					<script type="text/javascript">
 						console.log("slider-script");
   						$('#slider-area').noUiSlider({

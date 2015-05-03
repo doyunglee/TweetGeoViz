@@ -2,7 +2,6 @@
     margin-top: calc(60px + 2.5vh);
     margin-bottom: 2.5vh;
     height: calc(95vh - 60px);
-    text-align: center;
 }
 
 .well.map-well {
@@ -15,11 +14,20 @@
     height: calc(34.5vh - 60px);
 }
 
+.well.controlls-well {
+   height: calc(45vh - 60px);
+}
+
+#wordcloudcontainer {
+    height: calc(25vh -60);
+    text-align: center;
+}
+
 .btn.btn-done {
     position: absolute;
-    bottom: 2.5%;
-    left: 5%;
-    float: left;
+    bottom: 7.5%;
+    right: 12.5%;
+    float: right;
 }
 
 path {

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
 from tweeting import tweeting
 
@@ -10,6 +10,7 @@ def index():
 	return render_template("index.html")
 @app.route('/query')
 def query():
+	print request.args
 	epicenter = request.args.get('epi');
 	r1 = request.args.get('r1');
 	r2 = request.args.get('r2');
