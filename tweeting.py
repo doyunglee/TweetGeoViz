@@ -73,8 +73,8 @@ def tweeting(epi,r1,r2,tI,tF,u):
     final_df = pd.DataFrame({'features': all_words_vect.get_feature_names(), 'diffs':diff_tweets_avg, 'chi2s':chi2s, 'ndiffs':normalized_diffs})
 
     final_df  = final_df.sort(['ndiffs'], ascending=False)
-
     print final_df
+    return final_df.to_dict({'features':'chi2s'})
 
 if __name__ == '__main__':
     tweeting([32.7, -117.16],.2,1,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,1,0,0,0,0),.0015 )
