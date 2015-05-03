@@ -57,6 +57,7 @@
 							});
 
 							function makeCloud(data) {
+							    
 								var fill = d3.scale.category20();
 							    //get words
 							    wordarray = Object.keys(data)
@@ -69,7 +70,7 @@
 							    d3.layout.cloud().size([divwidth-70, divwidth-70])
 								.words(d3.zip(wordarray, weightarray).map(function(d) {
 									console.log(d[1]);
-								    return {text: d[0], size: parseInt(10000 * d[1])};
+								    return {text: d[0], size: parseInt(17500 * d[1])};
 								}))
 								.padding(5)
 								.rotate(function() { return 0; })
@@ -78,6 +79,7 @@
 								.on("end", draw)
 								.start();
 							    function draw(words) {
+								$('#wordcloudcontainer').find('svg').remove();
 								d3.select("#wordcloudcontainer").append("svg")
 								    .attr("width", divwidth)
 								    .attr("height", divwidth)
@@ -230,17 +232,17 @@
 					<script type="text/javascript">
 						console.log("slider-script");
   						$('#slider-area').noUiSlider({
-							start: [ .1, 3 ],
+							start: [ .25, 1 ],
 							range: {
 								'min': [  .01 ],
 								'max': [ 10 ]
 							}
 						});
 						$('#slider-uniqueness').noUiSlider({
-							start: [ 50 ],
+							start: [ .015 ],
 							range: {
-								'min': [  0 ],
-								'max': [ 100 ]
+								'min': [  .001 ],
+								'max': [ .1 ]
 							}
 						});
 						$('.btn-done').click(function (){
@@ -251,7 +253,7 @@
 								epiLt: $('#lat').val(),
 								epiLn: $('#long').val(),
 								r1: $('#slider-area').val()[0],
-								r2: $('#slider-area').val()[0],
+								r2: $('#slider-area').val()[1],
 								u: $('#slider-uniqueness').val(),
 							};
 							console.log(data);
