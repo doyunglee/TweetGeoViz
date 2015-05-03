@@ -74,5 +74,5 @@ def tweeting(epi,r1,r2,tI,tF):
     print final_df
 
 if __name__ == '__main__':
-    tweeting([37, 122],1,3,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,30,0,0,0,0) )
+    tweeting([37, -122],1,3,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,30,0,0,0,0) )
 
