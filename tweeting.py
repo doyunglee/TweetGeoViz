@@ -18,10 +18,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from random import choice
 
 
-def tweeting(epi,r1,r2,tI,tF):
+def tweeting(epi,r1,r2,tI,tF,u):
 
     limit = 10000
-    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3), max_df=.50, min_df=20/limit)
+    all_words_vect = TfidfVectorizer(stop_words="english", ngram_range=(1,3), max_df=u, min_df=20/limit)
 
 
     tweets_arr = np.empty([1,2], dtype='object')
@@ -77,5 +77,5 @@ def tweeting(epi,r1,r2,tI,tF):
     print final_df
 
 if __name__ == '__main__':
-    tweeting([32.7, -117.16],.2,1,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,1,0,0,0,0) )
+    tweeting([32.7, -117.16],.2,1,datetime.datetime(2014,5,20,0,0,0,0),datetime.datetime(2014,6,1,0,0,0,0),.0015 )
 
