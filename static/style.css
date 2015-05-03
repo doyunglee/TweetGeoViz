@@ -15,6 +15,13 @@
     height: calc(34.5vh - 60px);
 }
 
+.btn.btn-done {
+    position: absolute;
+    bottom: 2.5%;
+    left: 5%;
+    float: left;
+}
+
 path {
 	fill: none; stroke: black
 }
