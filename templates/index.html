@@ -190,7 +190,7 @@
   						$('#slider-area').noUiSlider({
 							start: [ .1, 3 ],
 							range: {
-								'min': [  .01 ],
+								'min': [.01 ],
 								'max': [ 10 ]
 							}
 						});
@@ -202,17 +202,17 @@
 							}
 						});
 						$('.btn-done').click(function (){
-							console.log("btn-clicked!")
+							console.log("btn-clicked!");
+							console.log($('#slider-area').val());
 							var data = {
 								start: $('#start').val(),
 								end: $('#end').val(),
 								epiLt: $('#lat').val(),
 								epiLn: $('#long').val(),
 								r1: $('#slider-area').val()[0],
-								r2: $('#slider-area').val()[0],
+								r2: $('#slider-area').val()[1],
 								u: $('#slider-uniqueness').val(),
 							};
-							console.log(data);
 
 							$.get('/query', data, function (words){
 								console.log(words);
