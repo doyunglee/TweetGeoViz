@@ -14,3 +14,52 @@
 .well.bottombar {
     min-height: calc(19.5vh - 60px);
 }
+
+path {
+	fill: none; stroke: black
+}
+
+.land {
+	fill: #9999ff;
+}
+
+.state-boundary {
+	fill: none;
+	stroke: #000000;
+}
+
+#map-station {
+	margin-left: auto;
+    margin-right: auto;
+}
+
+#map-container {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*Slider CSS*/
+#slider .sample1, #slider .sample2 {
+	padding: 20px 0;
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+#slider .sample2 {
+    height: 150px;
+}
+  
+#slider .sample2 .slider {
+    margin: 0 40px;
+}
+
+#slider h2 {
+    padding: 14px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#slider .slider {
+    margin: 15px;
+}
