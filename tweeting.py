@@ -67,6 +67,9 @@ def tweeting(epi,r1,r2,tI,tF,u):
 
     local_tweets_avg = np.asarray(local_words_count.sum(axis=0).ravel())[0]/local_words_count.shape[0]
 
+    local_tweets_total = local_tweets_avg.sum()
+    print local_tweets_total
+
     wide_area_tweets_avg = np.asarray(wide_area_words_count.sum(axis=0).ravel())[0]/wide_area_words_count.shape[0]
 
     expected_avg = (local_tweets_avg + wide_area_tweets_avg)/2
