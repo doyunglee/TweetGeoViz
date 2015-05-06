@@ -70,7 +70,7 @@
 							    d3.layout.cloud().size([divwidth-70, divwidth-70])
 								.words(d3.zip(wordarray, weightarray).map(function(d) {
 									console.log(d[1]);
-								    return {text: d[0], size: parseInt(17500 * d[1])};
+								    return {text: d[0], size: parseInt(15000 * d[1])};
 								}))
 								.padding(5)
 								.rotate(function() { return 0; })
